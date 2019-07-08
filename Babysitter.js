@@ -8,7 +8,12 @@ class Babysitter {
     }
 
     assignFamily(family) {
+        if (this.isBooked) {
+            throw 'Baby sitter is already booked!';
+        }
+
         this.assignedFamily = family.toUpperCase();
+        this.isBooked = true;
     }
 }
 
