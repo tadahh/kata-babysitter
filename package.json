@@ -1,0 +1,23 @@
+{
+    "name": "kata-babysitter",
+    "version": "1.0.0",
+    "description": "This kata simulates a babysitter working and getting paid for one night.  The rules are pretty straight forward.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node index.js",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tadahh/kata-babysitter.git"
+    },
+    "author": "Tadas Jodwalis",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tadahh/kata-babysitter/issues"
+    },
+    "homepage": "https://github.com/tadahh/kata-babysitter#readme",
+    "devDependencies": {
+        "jest": "^24.8.0"
+    }
+}
