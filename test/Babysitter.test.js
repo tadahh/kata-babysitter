@@ -1,22 +1,15 @@
 const Babysitter = require('../Babysitter');
 
-test('assigning a family to Babysitter', () => {
-    const babysitter = new Babysitter();
-
-    babysitter.assignFamily('a');
+test('assigning a Babysitter', () => {
+    const babysitter = new Babysitter('a', '12', '3');
 
     expect(babysitter.assignedFamily).toBe('A');
-    expect(babysitter.isBooked).toBe(true);
+    expect(babysitter.startTime).toBe('12');
+    expect(babysitter.endTime).toBe('3');
 });
 
-test('assigning another family to same Babysitter', () => {
-    const babysitter = new Babysitter();
-
-    babysitter.assignFamily('a');
-
-    expect(babysitter.isBooked).toBe(true);
-
+test('assigning a Babysitter that does not belong to Family A, B, or C', () => {
     expect(() => {
-        babysitter.assignFamily('b');
-    }).toThrow('Baby sitter is already booked!');
+        new Babysitter('d', '12', '3');
+    }).toThrow();
 });
