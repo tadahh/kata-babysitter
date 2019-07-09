@@ -3,6 +3,8 @@ class Babysitter {
         this.assignedFamily = family;
         this.startTime = startTime;
         this.endTime = endTime;
+
+        this.checkHoursWorked();
     }
 
     get assignedFamily() {
@@ -10,10 +12,12 @@ class Babysitter {
     }
 
     get startTime() {
+        // Can only start at 17 hours military
         return this._startTime;
     }
 
     get endTime() {
+        // Can work as late as 4 hours military
         return this._endTime;
     }
 
@@ -33,6 +37,18 @@ class Babysitter {
 
     set endTime(endTime) {
         this._endTime = endTime;
+    }
+
+    checkHoursWorked() {
+        if (this.endTime < this.startTime) {
+            throw 'End time must come later than start time';
+        }
+
+        let startTimeHour = this.startTime.getHours();
+
+        if (startTimeHour < 17 && startTimeHour > 4) {
+            throw 'Start time is not within working hours';
+        }
     }
 }
 
