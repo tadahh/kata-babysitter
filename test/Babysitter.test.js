@@ -33,3 +33,27 @@ test('start date hours are not between 5pm and 4am', () => {
         new Babysitter('a', startDate, endDate);
     }).toThrow();
 });
+
+test('calculating total pay for family A working from 5pm to 4am ', () => {
+    let startDate = new Date(2019, 7, 8, 17);
+    let endDate = new Date(2019, 7, 9, 4);
+    let babysitter = new Babysitter('a', startDate, endDate);
+
+    expect(babysitter.calculatePay()).toBe(190);
+});
+
+test('calculating total pay for family B working from 5pm to 4am ', () => {
+    let startDate = new Date(2019, 7, 8, 17);
+    let endDate = new Date(2019, 7, 9, 4);
+    let babysitter = new Babysitter('b', startDate, endDate);
+
+    expect(babysitter.calculatePay()).toBe(140);
+});
+
+test('calculating total pay for family C working from 5pm to 4am ', () => {
+    let startDate = new Date(2019, 7, 8, 17);
+    let endDate = new Date(2019, 7, 9, 4);
+    let babysitter = new Babysitter('c', startDate, endDate);
+
+    expect(babysitter.calculatePay()).toBe(189);
+});
