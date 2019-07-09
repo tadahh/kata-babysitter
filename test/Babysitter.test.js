@@ -11,8 +11,27 @@ test('assigning a Babysitter', () => {
 });
 
 test('assigning a Babysitter that does not belong to Family A, B, or C', () => {
+    let startDate = new Date(2019, 7, 8, 17);
+    let endDate = new Date(2019, 7, 8, 18);
+
     expect(() => {
-        new Babysitter('d', '12', '3');
+        new Babysitter('d', startDate, endDate);
+    }).toThrow();
+});
+
+test('passing a non Date startDate value to babysitter', () => {
+    let endDate = new Date(2019, 7, 8, 18);
+
+    expect(() => {
+        new Babysitter('a', '12', endDate);
+    }).toThrow();
+});
+
+test('passing a non Date endDate value to babysitter', () => {
+    let startDate = new Date(2019, 7, 8, 18);
+
+    expect(() => {
+        new Babysitter('a', startDate, '3');
     }).toThrow();
 });
 

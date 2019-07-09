@@ -32,11 +32,19 @@ class Babysitter {
     }
 
     set startTime(startTime) {
-        this._startTime = startTime;
+        if (startTime instanceof Date) {
+            this._startTime = startTime;
+        } else {
+            throw 'Start time must be a valid date';
+        }
     }
 
     set endTime(endTime) {
-        this._endTime = endTime;
+        if (endTime instanceof Date) {
+            this._endTime = endTime;
+        } else {
+            throw 'End time must be a valid date';
+        }
     }
 
     checkHoursWorked() {
@@ -55,7 +63,6 @@ class Babysitter {
         let totalPay = 0;
         let hoursWorked = this.calculateHoursWorked();
         let startTimeHour = this.startTime.getHours();
-        let endTimeHour = this.endTime.getHours();
 
         switch (this.assignedFamily) {
             case 'A':
