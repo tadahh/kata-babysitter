@@ -53,6 +53,15 @@ test('start date hours are not between 5pm and 4am', () => {
     }).toThrow();
 });
 
+test('end date hours are not between 5pm and 4am', () => {
+    let startDate = new Date(2019, 7, 8, 18);
+    let endDate = new Date(2019, 7, 9, 5);
+
+    expect(() => {
+        new Babysitter('a', startDate, endDate);
+    }).toThrow();
+});
+
 test('calculating total pay for family A working from 5pm to 4am ', () => {
     let startDate = new Date(2019, 7, 8, 17);
     let endDate = new Date(2019, 7, 9, 4);

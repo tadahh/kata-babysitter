@@ -53,9 +53,14 @@ class Babysitter {
         }
 
         let startTimeHour = this.startTime.getHours();
+        let endTimeHour = this.endTime.getHours();
 
         if (startTimeHour < 17 && startTimeHour > 4) {
             throw 'Start time is not within working hours';
+        }
+
+        if (endTimeHour < 17 && endTimeHour > 4) {
+            throw 'End time is not within working hours';
         }
     }
 
