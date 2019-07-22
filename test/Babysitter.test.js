@@ -93,3 +93,11 @@ test('return total pay for family A working from 5pm to 4am ', () => {
 
     expect(babysitter.totalPayForFamilyA()).toBe(190);
 });
+
+test('return total pay for family B working from 5pm to 4am ', () => {
+    let startDate = new Date(2019, 7, 8, 17);
+    let endDate = new Date(2019, 7, 9, 4);
+    let babysitter = new Babysitter('a', startDate, endDate);
+
+    expect(babysitter.totalPayForFamilyB()).toBe(140);
+});
