@@ -71,14 +71,7 @@ class Babysitter {
 
         switch (this.assignedFamily) {
             case 'A':
-                if (startTimeHour < 23) {
-                    totalPay += (23 - startTimeHour) * 15;
-                    totalPay += (hoursWorked - (23 - startTimeHour)) * 20;
-                } else {
-                    totalPay += hoursWorked * 20;
-                }
-
-                break;
+                return this.totalPayForFamilyA();
 
             case 'B':
                 for (let i = 0; i < hoursWorked; i++) {
@@ -112,6 +105,21 @@ class Babysitter {
         timeDifference /= 60 * 60;
 
         return Math.abs(Math.round(timeDifference));
+    }
+
+    totalPayForFamilyA() {
+        let totalPay = 0;
+        let hoursWorked = this.calculateHoursWorked();
+        let startTimeHour = this.startTime.getHours();
+
+        if (startTimeHour < 23) {
+            totalPay += (23 - startTimeHour) * 15;
+            totalPay += (hoursWorked - (23 - startTimeHour)) * 20;
+        } else {
+            totalPay += hoursWorked * 20;
+        }
+
+        return totalPay;
     }
 }
 
