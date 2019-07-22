@@ -65,10 +65,6 @@ class Babysitter {
     }
 
     calculatePay() {
-        let totalPay = 0;
-        let hoursWorked = this.calculateHoursWorked();
-        let startTimeHour = this.startTime.getHours();
-
         switch (this.assignedFamily) {
             case 'A':
                 return this.totalPayForFamilyA();
@@ -77,17 +73,8 @@ class Babysitter {
                 return this.totalPayForFamilyB();
 
             case 'C':
-                if (startTimeHour < 21) {
-                    totalPay += (21 - startTimeHour) * 21;
-                    totalPay += (hoursWorked - (21 - startTimeHour)) * 15;
-                } else {
-                    totalPay += hoursWorked * 15;
-                }
-
-                break;
+                return this.totalPayForFamilyC();
         }
-
-        return totalPay;
     }
 
     calculateHoursWorked() {
@@ -125,6 +112,21 @@ class Babysitter {
             } else {
                 totalPay += 16;
             }
+        }
+
+        return totalPay;
+    }
+
+    totalPayForFamilyC() {
+        let totalPay = 0;
+        let hoursWorked = this.calculateHoursWorked();
+        let startTimeHour = this.startTime.getHours();
+
+        if (startTimeHour < 21) {
+            totalPay += (21 - startTimeHour) * 21;
+            totalPay += (hoursWorked - (21 - startTimeHour)) * 15;
+        } else {
+            totalPay += hoursWorked * 15;
         }
 
         return totalPay;
